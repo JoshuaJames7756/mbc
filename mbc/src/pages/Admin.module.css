@@ -1,0 +1,27 @@
+/* src/pages/Admin.module.css */
+.admin {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.loginWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+}
+
+.main {
+  padding: 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}

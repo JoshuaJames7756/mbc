@@ -1,0 +1,22 @@
+.catalogo {
+  padding: var(--section-padding);
+}
+
+.titulo {
+  text-align: center;
+  font-size: 2.25rem;
+  color: var(--color-brown-deep);
+  margin-bottom: 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.estado {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--color-text-muted);
+}

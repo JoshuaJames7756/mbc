@@ -1,0 +1,73 @@
+.footer {
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+  padding: 3rem 1.5rem 0;
+}
+
+.contenido {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(244, 233, 216, 0.15);
+}
+
+.bloque h3 {
+  font-size: 1.1rem;
+  color: var(--color-gold-light);
+  margin-bottom: 0.4rem;
+}
+
+.metodo {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  margin-bottom: 0.75rem;
+}
+
+.numeros {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.numero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-inverse);
+  font-weight: 500;
+}
+
+.numero:hover {
+  color: var(--color-gold);
+}
+
+.entregas {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-gold-light);
+  font-weight: 500;
+}
+
+.marca {
+  text-align: center;
+  padding: 1.5rem 0;
+  font-family: var(--font-heading);
+  letter-spacing: 0.1em;
+}
+
+.marca p:first-child {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.slogan {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  opacity: 0.6;
+  letter-spacing: normal;
+  margin-top: 0.25rem;
+}

@@ -1,0 +1,81 @@
+.form {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.form input,
+.form select,
+.form textarea {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+.checkbox {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.5rem !important;
+}
+
+.checkbox input {
+  width: auto;
+}
+
+.preview {
+  width: 100px;
+  border-radius: var(--radius-sm);
+  margin-top: 0.5rem;
+}
+
+.subiendo {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.error {
+  color: #c0392b;
+  font-size: 0.85rem;
+}
+
+.acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.btnCancelar {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+}
+
+.btnGuardar {
+  background: var(--color-gold);
+  color: var(--color-brown-deep);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+.btnGuardar:disabled {
+  opacity: 0.6;
+}
