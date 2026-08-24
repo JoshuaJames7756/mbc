@@ -36,11 +36,12 @@ export default function ProductoForm({ producto, onGuardado, onCancelar }) {
 
     setSubiendoImagen(true);
     try {
-      const { url, public_id } = await subirImagenCloudinary(archivo);
+      const { url, public_id } = await subirImagenCloudinary(archivo, getToken);
       actualizar('imagen_url', url);
       actualizar('imagen_public_id', public_id);
     } catch (err) {
-      setError('No se pudo subir la imagen');
+      console.error('Error real al subir imagen:', err);
+      setError(`No se pudo subir la imagen: ${err.message}`);
     } finally {
       setSubiendoImagen(false);
     }
