@@ -1,3 +1,4 @@
+// src/components/Hero.jsx
 import logo from '../assets/img/logo-mbc-dorado.png';
 import styles from './Hero.module.css';
 
@@ -15,8 +16,6 @@ export default function Hero() {
             src={logo} 
             alt="MBC Cosmetics Logo" 
             className={styles.logo}
-            width={170}
-            height={170}
           />
         )}
         <p className={styles.tagline}>Belleza que empieza en ti</p>
@@ -34,13 +33,20 @@ export default function Hero() {
             href={linkWhatsapp} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="btn-whatsapp"
+            className={styles.btnPrincipal}
           >
             Hacer pedido por WhatsApp
           </a>
           <a href="#catalogo" className={styles.linkSecundario}>
             Ver catálogo completo ↓
           </a>
+        </div>
+
+        {/* Badges de Confianza para llenar el Hero y dar elegancia */}
+        <div className={styles.badges}>
+          <span>✦ 100% Orgánico</span>
+          <span>✦ Sin Parabenos</span>
+          <span>✦ Elaboración Artesanal</span>
         </div>
       </div>
     </section>
