@@ -98,7 +98,7 @@ export default function ProductoTable() {
                   {p.destacado && <span style={{ marginLeft: '0.5rem', fontSize: '0.75rem', color: 'var(--color-gold)' }}>★ Destacado</span>}
                 </td>
                 <td style={{ textTransform: 'capitalize' }}>{p.categoria}</td>
-                <td>{p.precio ? `Bs ${p.precio.toFixed(2)}` : '—'}</td>
+                <td>{p.precio ? `Bs ${Number(p.precio).toFixed(2)}` : '—'}</td>
                 <td>
                   <span style={{ opacity: p.activo ? 1 : 0.4 }}>
                     {p.activo ? '🟢 Activo' : '⚪ Oculto'}
