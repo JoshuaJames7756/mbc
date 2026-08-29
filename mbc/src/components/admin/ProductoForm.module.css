@@ -7,6 +7,7 @@
   flex-direction: column;
   gap: 1.1rem;
   box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
 }
 
 .form label {
@@ -26,22 +27,39 @@
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
   font-size: 0.9rem;
+  color: var(--color-text);
+  background-color: #FFFFFF;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.checkbox {
-  flex-direction: row !important;
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.2);
+}
+
+/* Checkbox estilizado sin recurrir a !important */
+label.checkbox {
+  flex-direction: row;
   align-items: center;
-  gap: 0.5rem !important;
+  gap: 0.5rem;
+  cursor: pointer;
 }
 
 .checkbox input {
   width: auto;
+  cursor: pointer;
 }
 
 .preview {
   width: 100px;
+  height: 100px;
+  object-fit: cover;
   border-radius: var(--radius-sm);
   margin-top: 0.5rem;
+  border: 1px solid var(--color-border);
 }
 
 .subiendo {
@@ -50,8 +68,9 @@
 }
 
 .error {
-  color: #c0392b;
+  color: #C0392B;
   font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .acciones {
@@ -66,6 +85,13 @@
   border: 1px solid var(--color-border);
   padding: 0.6rem 1.2rem;
   border-radius: var(--radius-sm);
+  color: var(--color-text);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.btnCancelar:hover {
+  background-color: var(--color-bg);
+  border-color: var(--color-text-muted);
 }
 
 .btnGuardar {
@@ -74,8 +100,16 @@
   padding: 0.6rem 1.2rem;
   border-radius: var(--radius-sm);
   font-weight: 600;
+  transition: opacity var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btnGuardar:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(201, 169, 97, 0.3);
 }
 
 .btnGuardar:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
+  cursor: not-allowed;
 }

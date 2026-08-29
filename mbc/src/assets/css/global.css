@@ -1,5 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
 @import './variables.css';
+
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   margin: 0;
@@ -26,14 +29,21 @@ a {
 }
 
 button {
-  font-family: var(--font-body);
+  font: inherit;
   cursor: pointer;
   border: none;
+  background: none;
 }
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
 }
 
 .container {
@@ -51,10 +61,11 @@ img {
   padding: 0.85rem 1.75rem;
   border-radius: var(--radius-lg);
   font-weight: 600;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .btn-whatsapp:hover {
   background: var(--color-cta-hover);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
