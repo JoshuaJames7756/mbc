@@ -68,52 +68,60 @@ export default function ProductoTable() {
       {error && <p className={styles.error}>{error}</p>}
 
       {!cargando && (
-        <table className={styles.tabla}>
-          <thead>
-            <tr>
-              <th>Imagen</th>
-              <th>Nombre</th>
-              <th>Categoría</th>
-              <th>Precio</th>
-              <th>Estado</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {productos.map((p) => (
-              <tr key={p.id}>
-                <td>
-                  {p.imagen_url ? (
-                    <img
-                      src={p.imagen_url}
-                      alt={p.nombre}
-                      style={{ width: '42px', height: '42px', borderRadius: '8px', objectFit: 'cover' }}
-                    />
-                  ) : (
-                    <span style={{ opacity: 0.4 }}>—</span>
-                  )}
-                </td>
-                <td>
-                  <strong>{p.nombre}</strong>
-                  {p.destacado && <span style={{ marginLeft: '0.5rem', fontSize: '0.75rem', color: 'var(--color-gold)' }}>★ Destacado</span>}
-                </td>
-                <td style={{ textTransform: 'capitalize' }}>{p.categoria}</td>
-                <td>{p.precio ? `Bs ${Number(p.precio).toFixed(2)}` : '—'}</td>
-                <td>
-                  <span style={{ opacity: p.activo ? 1 : 0.4 }}>
-                    {p.activo ? '🟢 Activo' : '⚪ Oculto'}
-                  </span>
-                </td>
-                <td className={styles.acciones}>
-                  <button onClick={() => setEditando(p)}>Editar</button>
-                  <button className={styles.btnEliminar} onClick={() => eliminarProducto(p.id)}>
-                    Eliminar
-                  </button>
-                </td>
+        <div className={styles.tablaContainer}>
+          <table className={styles.tabla}>
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Acciones</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {productos.map((p) => (
+                <tr key={p.id}>
+                  <td>
+                    {p.imagen_url ? (
+                      <img
+                        src={p.imagen_url}
+                        alt={p.nombre}
+                        style={{ width: '42px', height: '42px', borderRadius: '8px', objectFit: 'cover' }}
+                      />
+                    ) : (
+                      <span style={{ opacity: 0.4 }}>—</span>
+                    )}
+                  </td>
+                  <td>
+                    <strong>{p.nombre}</strong>
+                    {p.destacado && (
+                      <span style={{ marginLeft: '0.5rem', fontSize: '0.75rem', color: 'var(--color-gold, #c9a961)' }}>
+                        ★ Destacado
+                      </span>
+                    )}
+                  </td>
+                  <td style={{ textTransform: 'capitalize' }}>{p.categoria}</td>
+                  <td>{p.precio ? `Bs ${Number(p.precio).toFixed(2)}` : '—'}</td>
+                  <td>
+                    <span style={{ opacity: p.activo ? 1 : 0.4 }}>
+                      {p.activo ? '🟢 Activo' : '⚪ Oculto'}
+                    </span>
+                  </td>
+                  <td>
+                    <div className={styles.acciones}>
+                      <button onClick={() => setEditando(p)}>Editar</button>
+                      <button className={styles.btnEliminar} onClick={() => eliminarProducto(p.id)}>
+                        Eliminar
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

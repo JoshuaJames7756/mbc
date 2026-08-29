@@ -1,98 +1,114 @@
 .wrap {
-  background: var(--color-card-bg);
-  border-radius: var(--radius-md);
+  background: #ffffff;
+  border-radius: 16px;
   padding: 1.75rem;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--color-border);
-  overflow-x: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(201, 169, 97, 0.2);
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.header h2 {
+  font-family: var(--font-heading, serif);
+  font-size: 1.6rem;
+  color: #1a1a1a;
+  margin: 0;
 }
 
 .btnNuevo {
-  background: var(--color-gold);
-  color: var(--color-brown-deep);
-  padding: 0.65rem 1.25rem;
-  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, #c9a961 0%, #a48238 100%);
+  color: #0d0c0a;
   font-weight: 600;
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  border: none;
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btnNuevo:hover {
-  opacity: 0.92;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(201, 169, 97, 0.3);
+}
+
+/* Scroll para móviles sin romper el diseño */
+.tablaContainer {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tabla {
   width: 100%;
   border-collapse: collapse;
-  min-width: 600px;
+  text-align: left;
+  min-width: 650px; /* Garantiza legibilidad en móviles */
 }
 
 .tabla th {
-  text-align: left;
+  padding: 1rem 0.75rem;
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-text-muted);
-  padding: 0.85rem 0.65rem;
-  border-bottom: 2px solid var(--color-border);
+  letter-spacing: 1px;
+  color: #888888;
+  border-bottom: 2px solid rgba(201, 169, 97, 0.25);
+  font-weight: 600;
 }
 
 .tabla td {
-  padding: 0.9rem 0.65rem;
-  border-bottom: 1px solid var(--color-border);
-  font-size: 0.9rem;
-  color: var(--color-text);
+  padding: 1rem 0.75rem;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.15);
   vertical-align: middle;
+  color: #262626;
+  font-size: 0.92rem;
 }
 
-.tabla tbody tr {
-  transition: background-color var(--transition-fast);
-}
-
-.tabla tbody tr:hover {
-  background-color: rgba(244, 233, 216, 0.45);
+.tabla tr:last-child td {
+  border-bottom: none;
 }
 
 .acciones {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
 }
 
 .acciones button {
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid rgba(201, 169, 97, 0.4);
   background: transparent;
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.8rem;
-  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  color: #4a4a4a;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .acciones button:hover {
-  background-color: var(--color-bg);
-  border-color: var(--color-gold);
+  background: rgba(201, 169, 97, 0.1);
+  border-color: #c9a961;
+  color: #000;
 }
 
 .btnEliminar {
-  color: #C0392B;
-  border-color: rgba(192, 57, 43, 0.4);
+  border-color: rgba(220, 38, 38, 0.3) !important;
+  color: #dc2626 !important;
 }
 
 .btnEliminar:hover {
-  background-color: rgba(192, 57, 43, 0.08) !important;
-  border-color: #C0392B !important;
-  color: #A93226 !important;
+  background: rgba(220, 38, 38, 0.08) !important;
+  border-color: #dc2626 !important;
 }
 
 .error {
-  color: #C0392B;
-  font-size: 0.85rem;
-  font-weight: 500;
+  color: #dc2626;
+  font-size: 0.9rem;
+  margin-top: 1rem;
 }
