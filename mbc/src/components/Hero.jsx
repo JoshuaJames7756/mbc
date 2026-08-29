@@ -1,5 +1,5 @@
 // src/components/Hero.jsx
-import logo from '../assets/img/logo-mbc.png';
+import logo from '../assets/img/logo-mbc-dorado.png';
 import styles from './Hero.module.css';
 
 const WHATSAPP_NUMERO = '59167421429'; // ajusta si el principal es el 76438793
