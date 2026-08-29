@@ -31,7 +31,7 @@ export default function Footer() {
           <ul className={styles.listaInfo}>
             <li>
               <Truck size={18} />
-              <span>Envíos locales y a todo el país</span>
+              <span>Envíos locales y a toda la ciudad</span>
             </li>
             <li>
               <CreditCard size={18} />
