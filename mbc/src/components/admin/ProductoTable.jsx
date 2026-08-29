@@ -1,4 +1,3 @@
-// src/components/admin/ProductoTable.jsx
 import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@clerk/clerk-react';
 import ProductoForm from './ProductoForm';
@@ -29,7 +28,7 @@ export default function ProductoTable() {
   }, [cargarProductos]);
 
   async function eliminarProducto(id) {
-    if (!confirm('¿Eliminar este producto?')) return;
+    if (!confirm('¿Seguro que deseas eliminar este producto?')) return;
     try {
       const token = await getToken();
       const res = await fetch(`/api/productos/${id}`, {
@@ -59,31 +58,52 @@ export default function ProductoTable() {
   return (
     <div className={styles.wrap}>
       <div className={styles.header}>
-        <h2>Productos</h2>
+        <h2>Gestión de Productos</h2>
         <button className={styles.btnNuevo} onClick={() => setEditando({})}>
           + Nuevo producto
         </button>
       </div>
 
-      {cargando && <p>Cargando...</p>}
+      {cargando && <p>Cargando productos...</p>}
       {error && <p className={styles.error}>{error}</p>}
 
       {!cargando && (
         <table className={styles.tabla}>
           <thead>
             <tr>
+              <th>Imagen</th>
               <th>Nombre</th>
               <th>Categoría</th>
               <th>Precio</th>
-              <th></th>
+              <th>Estado</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {productos.map((p) => (
               <tr key={p.id}>
-                <td>{p.nombre}</td>
-                <td>{p.categoria}</td>
-                <td>{p.precio ? `Bs ${p.precio}` : '—'}</td>
+                <td>
+                  {p.imagen_url ? (
+                    <img
+                      src={p.imagen_url}
+                      alt={p.nombre}
+                      style={{ width: '42px', height: '42px', borderRadius: '8px', objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <span style={{ opacity: 0.4 }}>—</span>
+                  )}
+                </td>
+                <td>
+                  <strong>{p.nombre}</strong>
+                  {p.destacado && <span style={{ marginLeft: '0.5rem', fontSize: '0.75rem', color: 'var(--color-gold)' }}>★ Destacado</span>}
+                </td>
+                <td style={{ textTransform: 'capitalize' }}>{p.categoria}</td>
+                <td>{p.precio ? `Bs ${p.precio.toFixed(2)}` : '—'}</td>
+                <td>
+                  <span style={{ opacity: p.activo ? 1 : 0.4 }}>
+                    {p.activo ? '🟢 Activo' : '⚪ Oculto'}
+                  </span>
+                </td>
                 <td className={styles.acciones}>
                   <button onClick={() => setEditando(p)}>Editar</button>
                   <button className={styles.btnEliminar} onClick={() => eliminarProducto(p.id)}>

@@ -1,4 +1,3 @@
-// src/components/admin/ProductoForm.jsx
 import { useState } from 'react';
 import { useAuth } from '@clerk/clerk-react';
 import { subirImagenCloudinary } from '../../lib/cloudinary';
@@ -35,12 +34,13 @@ export default function ProductoForm({ producto, onGuardado, onCancelar }) {
     if (!archivo) return;
 
     setSubiendoImagen(true);
+    setError(null);
     try {
       const { url, public_id } = await subirImagenCloudinary(archivo, getToken);
       actualizar('imagen_url', url);
       actualizar('imagen_public_id', public_id);
     } catch (err) {
-      console.error('Error real al subir imagen:', err);
+      console.error('Error al subir imagen:', err);
       setError(`No se pudo subir la imagen: ${err.message}`);
     } finally {
       setSubiendoImagen(false);
@@ -75,7 +75,7 @@ export default function ProductoForm({ producto, onGuardado, onCancelar }) {
       if (!res.ok) throw new Error('Error al guardar');
       onGuardado();
     } catch (err) {
-      setError('No se pudo guardar el producto');
+      setError('No se pudo guardar el producto. Inténtalo nuevamente.');
     } finally {
       setGuardando(false);
     }
@@ -86,22 +86,39 @@ export default function ProductoForm({ producto, onGuardado, onCancelar }) {
       <h2>{esNuevo ? 'Nuevo producto' : 'Editar producto'}</h2>
 
       <label>
-        Nombre
+        Nombre del Producto
         <input
+          type="text"
           value={form.nombre}
           onChange={(e) => actualizar('nombre', e.target.value)}
+          placeholder="Ej. Shampoo Orgánico de Romero"
           required
         />
       </label>
 
-      <label>
-        Categoría
-        <select value={form.categoria} onChange={(e) => actualizar('categoria', e.target.value)}>
-          {CATEGORIAS.map((c) => (
-            <option key={c} value={c}>{c}</option>
-          ))}
-        </select>
-      </label>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+        <label>
+          Categoría
+          <select value={form.categoria} onChange={(e) => actualizar('categoria', e.target.value)}>
+            {CATEGORIAS.map((c) => (
+              <option key={c} value={c}>
+                {c.charAt(0).toUpperCase() + c.slice(1)}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label>
+          Precio (Bs)
+          <input
+            type="number"
+            step="0.01"
+            value={form.precio}
+            onChange={(e) => actualizar('precio', e.target.value)}
+            placeholder="0.00"
+          />
+        </label>
+      </div>
 
       <label>
         Descripción
@@ -109,12 +126,14 @@ export default function ProductoForm({ producto, onGuardado, onCancelar }) {
           value={form.descripcion}
           onChange={(e) => actualizar('descripcion', e.target.value)}
           rows={3}
+          placeholder="Escribe los beneficios o características principales..."
         />
       </label>
 
       <label>
         Ingredientes (separados por coma)
         <input
+          type="text"
           value={form.ingredientes}
           onChange={(e) => actualizar('ingredientes', e.target.value)}
           placeholder="Romero, Jengibre, Clavo de olor, Canela"
@@ -122,41 +141,33 @@ export default function ProductoForm({ producto, onGuardado, onCancelar }) {
       </label>
 
       <label>
-        Precio (Bs)
-        <input
-          type="number"
-          step="0.01"
-          value={form.precio}
-          onChange={(e) => actualizar('precio', e.target.value)}
-        />
-      </label>
-
-      <label>
-        Imagen
+        Imagen del Producto
         <input type="file" accept="image/*" onChange={manejarImagen} />
-        {subiendoImagen && <span className={styles.subiendo}>Subiendo...</span>}
+        {subiendoImagen && <span className={styles.subiendo}>Subiendo imagen a la nube...</span>}
         {form.imagen_url && (
-          <img src={form.imagen_url} alt="Vista previa" className={styles.preview} />
+          <img src={form.imagen_url} alt="Vista previa del producto" className={styles.preview} />
         )}
       </label>
 
-      <label className={styles.checkbox}>
-        <input
-          type="checkbox"
-          checked={form.destacado}
-          onChange={(e) => actualizar('destacado', e.target.checked)}
-        />
-        Destacado
-      </label>
+      <div style={{ display: 'flex', gap: '1.5rem', marginTop: '0.5rem' }}>
+        <label className={styles.checkbox}>
+          <input
+            type="checkbox"
+            checked={form.destacado}
+            onChange={(e) => actualizar('destacado', e.target.checked)}
+          />
+          Destacado
+        </label>
 
-      <label className={styles.checkbox}>
-        <input
-          type="checkbox"
-          checked={form.activo}
-          onChange={(e) => actualizar('activo', e.target.checked)}
-        />
-        Activo (visible en la landing)
-      </label>
+        <label className={styles.checkbox}>
+          <input
+            type="checkbox"
+            checked={form.activo}
+            onChange={(e) => actualizar('activo', e.target.checked)}
+          />
+          Activo (visible en la tienda)
+        </label>
+      </div>
 
       {error && <p className={styles.error}>{error}</p>}
 
@@ -165,7 +176,7 @@ export default function ProductoForm({ producto, onGuardado, onCancelar }) {
           Cancelar
         </button>
         <button type="submit" disabled={guardando || subiendoImagen} className={styles.btnGuardar}>
-          {guardando ? 'Guardando...' : 'Guardar'}
+          {guardando ? 'Guardando...' : 'Guardar Producto'}
         </button>
       </div>
     </form>

@@ -1,4 +1,3 @@
-// src/pages/Admin.jsx
 import { SignedIn, SignedOut, SignIn, UserButton } from '@clerk/clerk-react';
 import ProductoTable from '../components/admin/ProductoTable';
 import styles from './Admin.module.css';
@@ -14,7 +13,10 @@ export default function Admin() {
 
       <SignedIn>
         <header className={styles.header}>
-          <h1>Panel MBC</h1>
+          <div className={styles.headerTitle}>
+            <h1>Panel MBC</h1>
+            <span>Gestión de Catálogo</span>
+          </div>
           <UserButton afterSignOutUrl="/admin" />
         </header>
         <main className={styles.main}>

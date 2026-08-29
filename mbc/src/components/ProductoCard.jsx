@@ -1,39 +1,57 @@
-// src/components/ProductoCard.jsx
 import styles from './ProductoCard.module.css';
 
-const WHATSAPP_NUMERO = '59167421429'; // ajusta al número principal del cliente
+const WHATSAPP_NUMERO = '59167421429';
 
 export default function ProductoCard({ producto }) {
+  const { nombre, categoria, descripcion, ingredientes, precio, imagen_url } = producto;
+
+  const detallePrecio = precio ? ` (Bs ${precio})` : '';
   const mensaje = encodeURIComponent(
-    `Hola, me interesa el producto: ${producto.nombre}`
+    `¡Hola! Me interesa pedir el producto: *${nombre}*${detallePrecio}. ¿Tienen disponibilidad?`
   );
   const linkWhatsapp = `https://wa.me/${WHATSAPP_NUMERO}?text=${mensaje}`;
 
   return (
-    <div className={styles.card}>
+    <article className={styles.card}>
       <div className={styles.imagenWrap}>
-        {producto.imagen_url ? (
-          <img src={producto.imagen_url} alt={producto.nombre} />
+        {imagen_url ? (
+          <img 
+            src={imagen_url} 
+            alt={nombre} 
+            loading="lazy"
+          />
         ) : (
-          <div className={styles.sinImagen}>MBC</div>
+          <div className={styles.sinImagen}>
+            <span>{nombre?.charAt(0) || 'M'}</span>
+          </div>
         )}
       </div>
+
       <div className={styles.contenido}>
-        <span className={styles.categoria}>{producto.categoria}</span>
-        <h3>{producto.nombre}</h3>
-        {producto.descripcion && <p className={styles.descripcion}>{producto.descripcion}</p>}
-        {producto.ingredientes?.length > 0 && (
+        {categoria && <span className={styles.categoria}>{categoria}</span>}
+        <h3>{nombre}</h3>
+        {descripcion && <p className={styles.descripcion}>{descripcion}</p>}
+
+        {ingredientes?.length > 0 && (
           <ul className={styles.ingredientes}>
-            {producto.ingredientes.map((ing) => (
+            {ingredientes.map((ing) => (
               <li key={ing}>{ing}</li>
             ))}
           </ul>
         )}
-        {producto.precio && <p className={styles.precio}>Bs {producto.precio}</p>}
-        <a href={linkWhatsapp} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
+
+        {precio && <p className={styles.precio}>Bs {Number(precio).toFixed(2)}</p>}
+
+        <a 
+          href={linkWhatsapp} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="btn-whatsapp"
+          style={{ marginTop: 'auto', width: '100%' }}
+        >
           Pedir por WhatsApp
         </a>
       </div>
-    </div>
+    </article>
   );
 }
