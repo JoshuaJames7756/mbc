@@ -1,25 +1,27 @@
 :root {
   /* ===== Base ===== */
-  --color-bg: #F4E9D8;              /* crema/marfil — fondo general */
-  --color-bg-dark: #1A1410;         /* marrón casi negro — hero/footer */
-  --color-text: #221B14;            /* texto sobre fondo claro */
-  --color-text-inverse: #F4E9D8;    /* texto sobre fondo oscuro */
-  --color-text-muted: #6B5D4F;      /* texto secundario */
+  --color-bg: #F4E9D8;              /* Crema/marfil — fondo general */
+  --color-bg-dark: #1A1410;         /* Marrón casi negro — hero/footer */
+  --color-text: #221B14;            /* Texto sobre fondo claro */
+  --color-text-inverse: #F4E9D8;    /* Texto sobre fondo oscuro */
+  --color-text-muted: #6B5D4F;      /* Texto secundario */
 
   /* ===== Marca ===== */
-  --color-gold: #C9A961;            /* dorado principal (logo, tapas, bordes) */
-  --color-gold-light: #E8D4A0;      /* dorado claro (detalles, brillos) */
-  --color-brown-deep: #3B2418;      /* marrón del shampoo/etiqueta */
+  --color-gold: #C9A961;            /* Dorado principal */
+  --color-gold-light: #E8D4A0;      /* Dorado claro */
+  --color-brown-deep: #3B2418;      /* Marrón de acento */
 
   /* ===== CTA (WhatsApp) ===== */
   --color-cta: #25D366;
   --color-cta-hover: #1EBE5A;
 
-  /* ===== Utilidad ===== */
+  /* ===== Utilidad & Efectos ===== */
   --color-border: #D9C49A;
-  --color-card-bg: #FFFFFF;
-  --shadow-sm: 0 2px 8px rgba(26, 20, 16, 0.08);
-  --shadow-md: 0 8px 24px rgba(26, 20, 16, 0.12);
+  --color-card-bg: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(217, 196, 154, 0.45);
+  --shadow-sm: 0 4px 12px rgba(26, 20, 16, 0.05);
+  --shadow-md: 0 12px 32px rgba(26, 20, 16, 0.08);
+  --shadow-glow: 0 16px 40px rgba(201, 169, 97, 0.22);
 
   /* ===== Tipografía ===== */
   --font-heading: 'Playfair Display', serif;
@@ -27,12 +29,12 @@
 
   /* ===== Espaciado / Layout ===== */
   --radius-sm: 8px;
-  --radius-md: 14px;
+  --radius-md: 16px;
   --radius-lg: 24px;
   --max-width: 1200px;
   --section-padding: 6rem 1.5rem;
 
-  /* ===== Transiciones ===== */
+  /* ===== Microinteracciones ===== */
   --transition-fast: 0.2s ease;
-  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }

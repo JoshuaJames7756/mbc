@@ -1,10 +1,10 @@
 .wrap {
   background: var(--color-card-bg);
   border-radius: var(--radius-md);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
-  overflow-x: auto; /* Garantiza scroll horizontal en pantallas pequeñas */
+  overflow-x: auto;
 }
 
 .header {
@@ -17,7 +17,7 @@
 .btnNuevo {
   background: var(--color-gold);
   color: var(--color-brown-deep);
-  padding: 0.6rem 1.2rem;
+  padding: 0.65rem 1.25rem;
   border-radius: var(--radius-sm);
   font-weight: 600;
   transition: opacity var(--transition-fast), transform var(--transition-fast);
@@ -25,13 +25,13 @@
 
 .btnNuevo:hover {
   opacity: 0.92;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .tabla {
   width: 100%;
   border-collapse: collapse;
-  min-width: 600px; /* Evita que la tabla se colapse demasiado en móvil */
+  min-width: 600px;
 }
 
 .tabla th {
@@ -40,12 +40,12 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-text-muted);
-  padding: 0.75rem 0.6rem;
+  padding: 0.85rem 0.65rem;
   border-bottom: 2px solid var(--color-border);
 }
 
 .tabla td {
-  padding: 0.85rem 0.6rem;
+  padding: 0.9rem 0.65rem;
   border-bottom: 1px solid var(--color-border);
   font-size: 0.9rem;
   color: var(--color-text);
@@ -57,7 +57,7 @@
 }
 
 .tabla tbody tr:hover {
-  background-color: rgba(244, 233, 216, 0.4);
+  background-color: rgba(244, 233, 216, 0.45);
 }
 
 .acciones {
