@@ -1,9 +1,10 @@
 .card {
   background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
   display: flex;
   flex-direction: column;
 }
@@ -23,6 +24,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.card:hover .imagenWrap img {
+  transform: scale(1.04);
 }
 
 .sinImagen {
@@ -69,6 +75,7 @@
   flex-wrap: wrap;
   gap: 0.4rem;
   padding: 0;
+  margin-top: 0.25rem;
 }
 
 .ingredientes li {
@@ -83,5 +90,7 @@
 .precio {
   font-weight: 600;
   color: var(--color-brown-deep);
-  margin-top: 0.25rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  font-size: 1.1rem;
 }
